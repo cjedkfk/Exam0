@@ -15,6 +15,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class HeloController {
+	/**
+	 * @brief index를 불러온다
+	 * @param RequestMapping 
+	 * */
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public ModelAndView index(ModelAndView mav) {
 		mav.setViewName("index");

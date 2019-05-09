@@ -8,14 +8,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class HeloController1 {
-	@RequestMapping(value="/{num}", method=RequestMethod.GET)
+	@RequestMapping(value="/", method=RequestMethod.GET)
 	public ModelAndView index(ModelAndView mav) {
 		mav.setViewName("HeloController2");
 		mav.addObject("res");
 		return mav;
 	}
 	
-	@RequestMapping(value="/{num}", method=RequestMethod.POST)
+	@RequestMapping(value="/", method=RequestMethod.POST)
 	public ModelAndView send(
 		@RequestParam(value="num",required=false)String num1
 		,ModelAndView mav) {
@@ -25,7 +25,7 @@ public class HeloController1 {
 		
 		try {
 			
-			num += Integer.parseInt(num1)*1172;
+			num += Integer.parseInt(num1);
 		
 			res += String.valueOf(num);
 		
