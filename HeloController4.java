@@ -12,25 +12,25 @@ import org.springframework.web.servlet.ModelAndView;
 
 /**
  * @fn 		ModelAndView index(ModelAndView mav) , ModelAndView send
- * @brief 	1부터 n까지 입력받은 숫자의 홀수값을 더한다.
+ * @brief 	전기 사용량을 계산하는 프로그램
  * @author 	최지은
  * @date 	2019-05-16
  * @version 1
  * */
 
 @Controller
-public class HeloController3<DataObject> {
+public class HeloController4 {
 	/**
 	 * @brief 	index를 불러온다
 	 * @param 	RequestMapping 
 	 * @param 	RequestParam
+	 * @param 	<Integer>
 	 * @param 	total
-	 * @param <Integer>
 	 * @param	Average
 	 * */
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public ModelAndView index(ModelAndView mav) {
-		mav.setViewName("index3");
+		mav.setViewName("index4");
 		mav.addObject("res");
 		return mav;
 	}
@@ -38,36 +38,30 @@ public class HeloController3<DataObject> {
 	@RequestMapping(value="/", method=RequestMethod.POST)
 	public ModelAndView send(
 		@RequestParam(value="score1"
-					  ,required=false)int score1,
-		@RequestParam(value="score2"
-		  			  ,required=false)int score2,
-		@RequestParam(value="score3"
-		  			  ,required=false)int score3,
-		@RequestParam(value="score4"
-		  			  ,required=false)int score4,
-		@RequestParam(value="score5"
-		  			  ,required=false)int score5
+					  ,required=false)int usage
 					  ,ModelAndView mav) {		
 			
 			int total = 0;
-			int Average = 0;
+			int april=0;
+			double average = 0;
 			
-			ArrayList<Integer> student  = new ArrayList<Integer>();
-			student.add(score1);
-			student.add(score2);
-			student.add(score3);
-			student.add(score4);
-			student.add(score5);
+			ArrayList<Integer> total_usage  = new ArrayList<Integer>();
+			total_usage.add(20580);
+			total_usage.add(15720);
+			total_usage.add(32300);
+			total_usage.add(25120);
+			total_usage.add(usage);
 			
-			for(int i=0; i < student.size(); i++) {
-				total += i;
-				
+			april = total_usage.indexOf(3);
+			
+			for(int i=0; i < total_usage.size(); i++) {
+				total += i;	
 			}
-			Average = total/student.size();
+			average = total/total_usage.size();
 						
-			mav.addObject("res1", total);
-			mav.addObject("res2", Average);
-			mav.setViewName("index3");
+			mav.addObject("april", april);
+			mav.addObject("average", average);
+			mav.setViewName("index4");
 			return mav;
 	}
 
