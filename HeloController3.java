@@ -61,8 +61,9 @@ public class HeloController3<DataObject> {
 			
 			for(int i=0; i < student.size(); i++) {
 				total += i;
-				Average = total/student.size();
+				
 			}
+			Average = total/student.size();
 						
 			mav.addObject("res1", total);
 			mav.addObject("res2", Average);
