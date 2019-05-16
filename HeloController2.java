@@ -11,23 +11,24 @@ import org.springframework.web.servlet.ModelAndView;
 
 /**
  * @fn 		ModelAndView index(ModelAndView mav) , ModelAndView send
- * @brief 	키와 몸무게를 입력하면 BMI값이 나온다.
+ * @brief 	1부터 n까지 입력받은 숫자의 홀수값을 더한다.
  * @author 	최지은
  * @date 	2019-05-16
  * @version 1
  * */
 
 @Controller
-public class HeloController {
+public class HeloController2 {
 	/**
 	 * @brief 	index를 불러온다
 	 * @param 	RequestMapping 
 	 * @param 	RequestParam
 	 * @param 	total
+	 * @param	number
 	 * */
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public ModelAndView index(ModelAndView mav) {
-		mav.setViewName("index");
+		mav.setViewName("index2");
 		mav.addObject("res");
 		return mav;
 	}
@@ -35,42 +36,21 @@ public class HeloController {
 	@RequestMapping(value="/", method=RequestMethod.POST)
 	public ModelAndView send(
 		@RequestParam(value="num1"
-					  ,required=false)String num1,
-		@RequestParam(value="num2"
-		  			  ,required=false)float num2,
-		@RequestParam(value="num3"
-		  			  ,required=false)float num3
+					  ,required=false)int number
 					  ,ModelAndView mav) {		
 			
-			float total = 0;
-			String condition = "";
+			int total = 0;
 			
-			total = num3/(num2*num2);
-			
-			if(total < 18.5) {
-				condition = "저체중";
-			}else {
-				if(18.6 < total) {
-					if(total < 24.9) {
-						condition = "정상";
-					}
-				}else {
-					if(25 < total) {
-						if(total < 29.9) {
-							condition = "과체중";
-						}
-					}else {
-						if(30 < total) {
-							condition = "비만";
-					}	
+			for(int i=0; i < number; i++) {
+				if(number%2 != 0) {
+					total += i;
 				}
 			}
-		}
-			
-			mav.addObject("res1", total);
-			mav.addObject("res2", condition);
-			mav.setViewName("index5");
+						
+			mav.addObject("res", total);
+			mav.setViewName("index2");
 			return mav;
 	}
+
 
 }
